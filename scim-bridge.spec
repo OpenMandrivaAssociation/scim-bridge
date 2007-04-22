@@ -1,4 +1,4 @@
-%define version      0.4.10
+%define version      0.4.12
 %define release      %mkrel 1
 
 %define scim_version 1.4.5
@@ -13,7 +13,7 @@ Release:      %{release}
 Group:        System/Internationalization
 License:      GPL
 URL:          http://sourceforge.jp/projects/scim-imengine/
-Source0:      %{name}-%{version}.tar.bz2
+Source0:      %{name}-%{version}.tar.gz
 BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        %{libname} = %{version}
 Requires:        scim >= %{scim_version}
@@ -60,6 +60,9 @@ rm -rf $RPM_BUILD_ROOT
 rm -f %{buildroot}/%{_libdir}/gtk-2.0/immodules/*.{a,la}
 rm -f %{buildroot}/%_prefix/lib/qt3/plugins/inputmethods/im-scim-bridge.{a,la}
 
+mkdir -p %{buildroot}%{qt3plugins}/inputmethods/
+mv %{buildroot}%{qt3dir}/plugins/inputmethods/*.so %{buildroot}%{qt3plugins}/inputmethods/
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -86,6 +89,6 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %files qt
 %defattr(-,root,root)
 %doc COPYING
-%_prefix/lib/qt3/plugins/inputmethods/im-scim-bridge.so
+%{qt3plugins}/inputmethods/*.so
 
 
