@@ -1,4 +1,4 @@
-%define version      0.4.12
+%define version      0.4.13
 %define release      %mkrel 1
 
 %define scim_version 1.4.6
@@ -18,7 +18,7 @@ BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        %{libname} = %{version}
 Requires:        scim >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
-BuildRequires:   automake1.8 doxygen
+BuildRequires:   automake doxygen
 BuildRequires:   qt3-devel
 
 %description
@@ -45,7 +45,7 @@ scim-bridge for qt.
 
 %prep
 %setup -q
-cp /usr/share/automake-1.9/mkinstalldirs .
+cp /usr/share/automake-1.10/mkinstalldirs .
 
 %build
 [[ ! -x configure ]] && ./bootstrap
