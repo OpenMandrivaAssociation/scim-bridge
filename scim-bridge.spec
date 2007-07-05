@@ -1,7 +1,7 @@
 %define version      0.4.13
 %define release      %mkrel 1
 
-%define scim_version 1.4.6
+%define scim_version 1.4.7
 
 %define libname_orig lib%{name}
 %define libname %mklibname %{name} 0
@@ -15,16 +15,16 @@ License:      GPL
 URL:          http://sourceforge.jp/projects/scim-imengine/
 Source0:      %{name}-%{version}.tar.gz
 BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:        %{libname} = %{version}
+Requires:        %{libname} = %{version}-%{release}
 Requires:        scim >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen
 BuildRequires:   qt3-devel
+BuildRequires:	 qt4-devel
 
 %description
 Scim-bridge is yet another IM client of SCIM.
 It solves SCIM's C++ ABI problems.
-
 
 %package -n %{libname}
 Summary:    Scim-bridge library
@@ -34,14 +34,23 @@ Provides:   %{libname_orig} = %{version}-%{release}
 %description -n %{libname}
 scim-bridge library.
 
-%package    qt
-Summary:    Scim-bridge for qt
+%package    qt3
+Summary:    Scim-bridge for qt3
+Group:      System/Internationalization
+Requires:   %{name} = %{version}
+Obsoletes:  %{name}-qt
+Provides:   %{name}-qt
+
+%description qt3
+scim-bridge for qt3.
+
+%package    qt4
+Summary:    Scim-bridge for qt4
 Group:      System/Internationalization
 Requires:   %{name} = %{version}
 
-%description qt
-scim-bridge for qt.
-
+%description qt4
+scim-bridge for qt4.
 
 %prep
 %setup -q
@@ -58,10 +67,14 @@ rm -rf $RPM_BUILD_ROOT
 
 # remove unnecessary files
 rm -f %{buildroot}/%{_libdir}/gtk-2.0/immodules/*.{a,la}
-rm -f %{buildroot}/%_prefix/lib/qt3/plugins/inputmethods/im-scim-bridge.{a,la}
+rm -f %{buildroot}/%{qt3dir}/plugins/inputmethods/im-scim-bridge.{a,la}
+rm -f %{buildroot}/%{qt4dir}/plugins/inputmethods/im-scim-bridge.{a,la}
 
 mkdir -p %{buildroot}%{qt3plugins}/inputmethods/
-mv %{buildroot}%{qt3dir}/plugins/inputmethods/*.so %{buildroot}%{qt3plugins}/inputmethods/
+mv %{buildroot}%{qt3dir}/plugins/inputmethods/* %{buildroot}%{qt3plugins}/inputmethods/
+
+mkdir -p %{buildroot}%{qt4plugins}/inputmethods/
+mv %{buildroot}%{qt4dir}/plugins/inputmethods/* %{buildroot}%{qt4plugins}/inputmethods/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -75,7 +88,6 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 /sbin/ldconfig
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
-
 %files
 %defattr(-,root,root)
 %doc AUTHORS COPYING ChangeLog README
@@ -86,9 +98,12 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %doc COPYING
 %{_libdir}/gtk-2.0/immodules/*.so
 
-%files qt
+%files qt3
 %defattr(-,root,root)
 %doc COPYING
 %{qt3plugins}/inputmethods/*.so
 
-
+%files qt4
+%defattr(-,root,root)
+%doc COPYING
+%{qt4plugins}/inputmethods/*.so
