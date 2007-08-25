@@ -1,5 +1,5 @@
 %define version      0.4.13
-%define release      %mkrel 2
+%define release      %mkrel 3
 
 %define scim_version 1.4.7
 
@@ -16,6 +16,8 @@ URL:          http://sourceforge.jp/projects/scim-imengine/
 Source0:      %{name}-%{version}.tar.gz
 # fwang: patch0 from fedora, fix rhbug#242864
 Patch0:		scim-bridge-0.4.13-setlocale.patch
+# fwang: patch1 from CVS, fix status change notification crash
+Patch1:		scim-bridge-0.4.13-fix-status-notification.patch
 BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        %{libname} = %{version}-%{release}
 Requires:        scim >= %{scim_version}
@@ -57,6 +59,7 @@ scim-bridge for qt4.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 cp /usr/share/automake-1.10/mkinstalldirs .
