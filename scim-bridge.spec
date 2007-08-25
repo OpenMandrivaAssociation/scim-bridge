@@ -12,8 +12,8 @@ Version:      %{version}
 Release:      %{release}
 Group:        System/Internationalization
 License:      GPL
-URL:          http://sourceforge.jp/projects/scim-imengine/
-Source0:      %{name}-%{version}.tar.gz
+URL:          http://sourceforge.net/projects/scim/
+Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 # fwang: patch0 from fedora, fix rhbug#242864
 Patch0:		scim-bridge-0.4.13-setlocale.patch
 # fwang: patch1 from CVS, fix status change notification crash
