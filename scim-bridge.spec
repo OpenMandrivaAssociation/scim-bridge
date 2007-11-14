@@ -1,17 +1,14 @@
 %define version      0.4.13
-%define release      %mkrel 3
+%define release      %mkrel 4
 
 %define scim_version 1.4.7
-
-%define libname_orig lib%{name}
-%define libname %mklibname %{name} 0
 
 Name:         scim-bridge
 Summary:      Scim-bridge is yet another IM client of SCIM
 Version:      %{version}
 Release:      %{release}
 Group:        System/Internationalization
-License:      GPL
+License:      GPLv2+
 URL:          http://sourceforge.net/projects/scim/
 Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 # fwang: patch0 from fedora, fix rhbug#242864
@@ -19,24 +16,25 @@ Patch0:		scim-bridge-0.4.13-setlocale.patch
 # fwang: patch1 from CVS, fix status change notification crash
 Patch1:		scim-bridge-0.4.13-fix-status-notification.patch
 BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root
-Requires:        %{libname} = %{version}-%{release}
-Requires:        scim >= %{scim_version}
+Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen
 BuildRequires:   qt3-devel
 BuildRequires:	 qt4-devel
+Provides:        scim-client
+Suggests:        %name-gtk = %{version}-%{release}
 
 %description
 Scim-bridge is yet another IM client of SCIM.
 It solves SCIM's C++ ABI problems.
 
-%package -n %{libname}
-Summary:    Scim-bridge library
+%package gtk
+Summary:    Scim-bridge gtk immodule
 Group:      System/Internationalization
-Provides:   %{libname_orig} = %{version}-%{release}
+Obsoletes:   %mklibname scim-bridge 0
 
-%description -n %{libname}
-scim-bridge library.
+%description gtk
+scim-bridge gtk immodule.
 
 %package    qt3
 Summary:    Scim-bridge for qt3
@@ -86,11 +84,11 @@ mv %{buildroot}%{qt4dir}/plugins/inputmethods/* %{buildroot}%{qt4plugins}/inputm
 rm -rf $RPM_BUILD_ROOT
 
 
-%post -n %{libname}
+%post gtk
 /sbin/ldconfig
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
-%postun -n %{libname}
+%postun gtk
 /sbin/ldconfig
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
@@ -99,17 +97,14 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %doc AUTHORS COPYING ChangeLog README
 %{_bindir}/scim-bridge
 
-%files -n %{libname}
+%files gtk
 %defattr(-,root,root)
-%doc COPYING
 %{_libdir}/gtk-2.0/immodules/*.so
 
 %files qt3
 %defattr(-,root,root)
-%doc COPYING
 %{qt3plugins}/inputmethods/*.so
 
 %files qt4
 %defattr(-,root,root)
-%doc COPYING
 %{qt4plugins}/inputmethods/*.so
