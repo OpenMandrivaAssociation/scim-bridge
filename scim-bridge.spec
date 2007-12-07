@@ -21,7 +21,7 @@ BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen
 BuildRequires:   qt3-devel
 BuildRequires:	 qt4-devel
-Provides:        scim-client
+Provides:        scim-client = %{scim_api}
 Suggests:        %name-gtk = %{version}-%{release}
 
 %description
