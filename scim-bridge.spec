@@ -15,7 +15,6 @@ Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-bridge-0.4.13-setlocale.patch
 # fwang: patch1 from CVS, fix status change notification crash
 Patch1:		scim-bridge-0.4.13-fix-status-notification.patch
-BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen
