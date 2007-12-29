@@ -58,7 +58,7 @@ scim-bridge for qt4.
 %build
 cp /usr/share/automake-1.10/mkinstalldirs .
 [[ ! -x configure ]] && ./bootstrap
-%configure2_5x
+%configure2_5x --enable-agent --enable-gtk2-immodule --enable-qt3-immodule --enable-qt4-immodule
 %make
 
 %install
