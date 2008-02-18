@@ -4,7 +4,7 @@
 %define scim_version 1.4.7
 
 Name:         scim-bridge
-Summary:      Scim-bridge is yet another IM client of SCIM
+Summary:      Yet another IM client of SCIM
 Version:      %{version}
 Release:      %{release}
 Group:        System/Internationalization
