@@ -1,5 +1,5 @@
-%define version      0.4.14
-%define release      %mkrel 4
+%define version      0.4.15
+%define release      %mkrel 1
 
 %define scim_version 1.4.7
 
@@ -12,9 +12,6 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:      GPLv2+
 URL:          http://sourceforge.net/projects/scim/
 Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
-# fwang: patch0 from fedora, fix rhbug#242864
-Patch0:		scim-bridge-0.4.13-setlocale.patch
-Patch1:		scim-bridge-0.4.14-launch-x11-frontend.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen
@@ -55,8 +52,6 @@ scim-bridge for qt4.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
 
 %build
 cp /usr/share/automake-1.10/mkinstalldirs .
