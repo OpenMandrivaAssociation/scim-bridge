@@ -15,7 +15,7 @@ Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-bridge-0.4.15-use-mandriva-qt-dir.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
-BuildRequires:   automake doxygen
+BuildRequires:   automake doxygen gettext-devel
 BuildRequires:   qt3-devel
 BuildRequires:	 qt4-devel
 Provides:        scim-client = %{scim_api}
