@@ -1,5 +1,5 @@
 %define version      0.4.15
-%define release      %mkrel 1
+%define release      %mkrel 2
 
 %define scim_version 1.4.7
 
@@ -12,6 +12,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:      GPLv2+
 URL:          http://sourceforge.net/projects/scim/
 Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
+Patch0:		scim-bridge-0.4.15-use-mandriva-qt-dir.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen
@@ -52,10 +53,10 @@ scim-bridge for qt4.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
-cp /usr/share/automake-1.10/mkinstalldirs .
-[[ ! -x configure ]] && ./bootstrap
+./bootstrap
 %configure2_5x --enable-agent --enable-gtk2-immodule --enable-qt3-immodule --enable-qt4-immodule
 %make
 
@@ -65,18 +66,11 @@ rm -rf $RPM_BUILD_ROOT
 
 # remove unnecessary files
 rm -f %{buildroot}/%{_libdir}/gtk-2.0/immodules/*.{a,la}
-rm -f %{buildroot}/%{qt3dir}/plugins/inputmethods/im-scim-bridge.{a,la}
-rm -f %{buildroot}/%{qt4dir}/plugins/inputmethods/im-scim-bridge.{a,la}
-
-mkdir -p %{buildroot}%{qt3plugins}/inputmethods/
-mv %{buildroot}%{qt3dir}/plugins/inputmethods/* %{buildroot}%{qt3plugins}/inputmethods/
-
-mkdir -p %{buildroot}%{qt4plugins}/inputmethods/
-mv %{buildroot}%{qt4dir}/plugins/inputmethods/* %{buildroot}%{qt4plugins}/inputmethods/
+rm -f %{buildroot}/%{qt3plugins}/inputmethods/im-scim-bridge.{a,la}
+rm -f %{buildroot}/%{qt4plugins}/inputmethods/im-scim-bridge.{a,la}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
 
 %post gtk
 /sbin/ldconfig
