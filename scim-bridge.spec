@@ -73,11 +73,15 @@ rm -f %{buildroot}/%{qt4plugins}/inputmethods/im-scim-bridge.{a,la}
 rm -rf $RPM_BUILD_ROOT
 
 %post gtk
+%if %mdkversion < 200900
 /sbin/ldconfig
+%endif
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
 %postun gtk
+%if %mdkversion < 200900
 /sbin/ldconfig
+%endif
 gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 
 %files
