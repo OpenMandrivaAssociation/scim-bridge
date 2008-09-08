@@ -13,6 +13,7 @@ License:      GPLv2+
 URL:          http://sourceforge.net/projects/scim/
 Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-bridge-0.4.15-use-mandriva-qt-dir.patch
+Patch1:		bug-351920-should-return-retval.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
@@ -54,6 +55,7 @@ scim-bridge for qt4.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1
 
 %build
 ./bootstrap
