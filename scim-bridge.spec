@@ -1,5 +1,5 @@
 %define version      0.4.15
-%define release      %mkrel 3
+%define release      %mkrel 4
 
 %define scim_version 1.4.7
 
@@ -14,6 +14,7 @@ URL:          http://sourceforge.net/projects/scim/
 Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-bridge-0.4.15-use-mandriva-qt-dir.patch
 Patch1:		bug-351920-should-return-retval.patch
+Patch2:		scim-bridge-0.4.15-qt4-focus.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
@@ -56,6 +57,7 @@ scim-bridge for qt4.
 %setup -q
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 ./bootstrap
