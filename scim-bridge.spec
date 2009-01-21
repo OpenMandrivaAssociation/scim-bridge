@@ -15,7 +15,6 @@ Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-bridge-0.4.15-use-mandriva-qt-dir.patch
 Patch1:		bug-351920-should-return-retval.patch
 Patch2:		scim-bridge-0.4.15-qt4-focus.patch
-Patch3:		scim-bridge-0.4.15-drop-po-dir.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
@@ -41,7 +40,6 @@ Summary:    Scim-bridge for qt3
 Group:      System/Internationalization
 Requires:   %{name} = %{version}
 Obsoletes:  %{name}-qt
-Provides:   %{name}-qt
 
 %description qt3
 scim-bridge for qt3.
@@ -59,10 +57,8 @@ scim-bridge for qt4.
 %patch0 -p0
 %patch1 -p1
 %patch2 -p1
-%patch3 -p0
 
 %build
-./bootstrap
 %configure2_5x --enable-agent --enable-gtk2-immodule --enable-qt3-immodule --enable-qt4-immodule
 %make
 
