@@ -1,5 +1,5 @@
-%define version      0.4.15.2
-%define release      %mkrel 2
+%define version      0.4.16
+%define release      %mkrel 1
 
 %define scim_version 1.4.7
 
@@ -54,7 +54,7 @@ Requires:   %{name} = %{version}
 scim-bridge for qt4.
 
 %prep
-%setup -q -n scim-bridge-0.4.15
+%setup -q -n scim-bridge-%{version}
 %patch0 -p0
 %patch1 -p1
 %patch2 -p1
