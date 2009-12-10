@@ -1,5 +1,5 @@
 %define version      0.4.16
-%define release      %mkrel 2
+%define release      %mkrel 3
 
 %define scim_version 1.4.7
 
@@ -20,7 +20,6 @@ Patch4:		scim-bridge-0.4.16-gcc44.patch
 Requires:        scim-common >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
-BuildRequires:   qt3-devel
 BuildRequires:	 qt4-devel
 Provides:        scim-client = %{scim_api}
 Suggests:        %name-gtk = %{version}-%{release}
@@ -36,15 +35,6 @@ Obsoletes:   %mklibname scim-bridge 0
 
 %description gtk
 scim-bridge gtk immodule.
-
-%package    qt3
-Summary:    Scim-bridge for qt3
-Group:      System/Internationalization
-Requires:   %{name} = %{version}
-Obsoletes:  %{name}-qt
-
-%description qt3
-scim-bridge for qt3.
 
 %package    qt4
 Summary:    Scim-bridge for qt4
@@ -63,7 +53,7 @@ scim-bridge for qt4.
 %patch4 -p1
 
 %build
-%configure2_5x --enable-agent --enable-gtk2-immodule --enable-qt3-immodule --enable-qt4-immodule
+%configure2_5x --enable-agent --enable-gtk2-immodule --disable-qt3-immodule --enable-qt4-immodule
 %make
 
 %install
@@ -72,7 +62,6 @@ rm -rf $RPM_BUILD_ROOT
 
 # remove unnecessary files
 rm -f %{buildroot}/%{_libdir}/gtk-2.0/immodules/*.{a,la}
-rm -f %{buildroot}/%{qt3plugins}/inputmethods/im-scim-bridge.{a,la}
 rm -f %{buildroot}/%{qt4plugins}/inputmethods/im-scim-bridge.{a,la}
 
 %clean
@@ -98,10 +87,6 @@ gtk-query-immodules-2.0 > %{_sysconfdir}/gtk-2.0/gtk.immodules.%_lib
 %files gtk
 %defattr(-,root,root)
 %{_libdir}/gtk-2.0/immodules/*.so
-
-%files qt3
-%defattr(-,root,root)
-%{qt3plugins}/inputmethods/*.so
 
 %files qt4
 %defattr(-,root,root)
