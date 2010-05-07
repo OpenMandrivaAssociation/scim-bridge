@@ -1,5 +1,5 @@
 %define version      0.4.16
-%define release      %mkrel 3
+%define release      %mkrel 4
 
 %define scim_version 1.4.7
 
@@ -17,7 +17,7 @@ Patch1:		bug-351920-should-return-retval.patch
 Patch2:		scim-bridge-0.4.15.2-qt4-focus.patch
 Patch3:		scim-bridge-0.4.15.2-linkage.patch
 Patch4:		scim-bridge-0.4.16-gcc44.patch
-Requires:        scim-common >= %{scim_version}
+Requires:        scim >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
 BuildRequires:	 qt4-devel
