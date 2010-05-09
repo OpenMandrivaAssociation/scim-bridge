@@ -1,5 +1,5 @@
 %define version      0.4.16
-%define release      %mkrel 4
+%define release      %mkrel 5
 
 %define scim_version 1.4.7
 
@@ -17,6 +17,9 @@ Patch1:		bug-351920-should-return-retval.patch
 Patch2:		scim-bridge-0.4.15.2-qt4-focus.patch
 Patch3:		scim-bridge-0.4.15.2-linkage.patch
 Patch4:		scim-bridge-0.4.16-gcc44.patch
+Patch5:		scim-bridge-0.4.15-fix-gdm.patch
+Patch6:		scim-bridge-0.4.16-fix-gtk-key-snooper.patch
+Patch7:		scim-bridge-0.4.16-fixes-null-imengine.patch
 Requires:        scim >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
@@ -51,6 +54,9 @@ scim-bridge for qt4.
 %patch2 -p1
 %patch3 -p0
 %patch4 -p1
+%patch5 -p1
+%patch6 -p0
+%patch7 -p1
 
 %build
 %configure2_5x --enable-agent --enable-gtk2-immodule --disable-qt3-immodule --enable-qt4-immodule
