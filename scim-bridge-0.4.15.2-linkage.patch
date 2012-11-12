@@ -1,0 +1,66 @@
+--- client-qt/qt3/Makefile.am~	2009-01-25 10:46:12.000000000 +0100
++++ client-qt/qt3/Makefile.am	2009-01-25 10:59:05.000000000 +0100
+@@ -38,11 +38,11 @@
+ 
+ im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ 							-avoid-version -no-undefined \
+-							-module \
+-							@QT3_LIBS@
++							-module
+ 
+ im_scim_bridge_la_LIBADD  = $(top_srcdir)/common/libscimbridgecommon.la \
+-							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
++							$(top_srcdir)/client-common/libscimbridgeclientcommon.la \
++							@QT3_LIBS@
+ 
+ MOC = @QT3_PREFIX@/bin/moc
+ 
+--- client-qt/qt3/Makefile.in~	2009-01-25 10:46:12.000000000 +0100
++++ client-qt/qt3/Makefile.in	2009-01-25 11:00:02.000000000 +0100
+@@ -256,10 +256,10 @@
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							-avoid-version -no-undefined \
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							-module \
+-@SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							@QT3_LIBS@
+ 
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@im_scim_bridge_la_LIBADD = $(top_srcdir)/common/libscimbridgecommon.la \
+-@SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
++@SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la \
++@SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@							@QT3_LIBS@
+ 
+ @SCIM_BRIDGE_BUILD_QT3_IMMODULE_TRUE@MOC = @QT3_PREFIX@/bin/moc
+ MAINTAINERCLEANFILES = Makefile.in
+--- client-qt/qt4/Makefile.am~	2009-01-25 10:46:12.000000000 +0100
++++ client-qt/qt4/Makefile.am	2009-01-25 11:01:13.000000000 +0100
+@@ -38,11 +38,11 @@
+ 
+ im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ 							-avoid-version -no-undefined \
+-							-module \
+-							@QT4_LIBS@
++							-module
+ 
+ im_scim_bridge_la_LIBADD  = $(top_srcdir)/common/libscimbridgecommon.la \
+-							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
++							$(top_srcdir)/client-common/libscimbridgeclientcommon.la \
++							@QT4_LIBS@
+ 
+ MOC = @QT4_PREFIX@/bin/moc
+ 
+--- client-qt/qt4/Makefile.in~	2009-01-25 10:46:13.000000000 +0100
++++ client-qt/qt4/Makefile.in	2009-01-25 11:01:46.000000000 +0100
+@@ -255,11 +255,11 @@
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@im_scim_bridge_la_CFLAGS = @QT4_CFLAGS@ -DQT_IMMODULE -DQT4 -g -O0
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@im_scim_bridge_la_LDFLAGS = -rpath $(moduledir) \
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							-avoid-version -no-undefined \
+-@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							-module \
+-@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							@QT4_LIBS@
++@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							-module
+ 
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@im_scim_bridge_la_LIBADD = $(top_srcdir)/common/libscimbridgecommon.la \
+-@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la
++@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							$(top_srcdir)/client-common/libscimbridgeclientcommon.la \
++@SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@							@QT4_LIBS@
+ 
+ @SCIM_BRIDGE_BUILD_QT4_IMMODULE_TRUE@MOC = @QT4_PREFIX@/bin/moc
+ MAINTAINERCLEANFILES = Makefile.in

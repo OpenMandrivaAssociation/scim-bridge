@@ -1,0 +1,29 @@
+--- scim-bridge-0.4.15/client-qt/scim-bridge-client-imcontext-qt.cpp~	2008-11-02 07:44:46.000000000 +0100
++++ scim-bridge-0.4.15/client-qt/scim-bridge-client-imcontext-qt.cpp	2009-01-25 10:44:10.000000000 +0100
+@@ -220,7 +220,12 @@
+ {
+     scim_bridge_pdebugln (4, "ScimBridgeClientIMContextImpl::setFocusWidget ()");
+     QInputContext::setFocusWidget (widget);
+-    focus_in ();
++    if (widget == NULL) {
++    	focus_out ();
++    }
++    else {
++   	focus_in ();
++    }
+     update ();
+ }
+ 
+@@ -442,8 +447,10 @@
+         }
+     }
+ 
+-    set_preedit_shown (false);
+-    update_preedit ();
++    if (preedit_shown) {
++	set_preedit_shown (false);
++    	update_preedit ();
++    }
+ 
+     focused_imcontext = NULL;
+ }

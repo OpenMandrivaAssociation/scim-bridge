@@ -1,0 +1,13 @@
+Index: scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp
+===================================================================
+--- scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp
++++ scim-bridge-0.4.16/agent/scim-bridge-agent-application.cpp	2009-05-26 10:31:30.000000000 -0400
+@@ -65,7 +65,7 @@
+     unsigned int tmp_uint;
+ 
+     int option = 0;
+-    while (option != EOF) {
++    while (option != -1) {
+         option = getopt_long (argc, argv, short_options, long_options, NULL);
+         switch (option) {
+             case 'v':

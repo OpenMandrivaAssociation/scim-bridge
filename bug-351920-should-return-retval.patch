@@ -1,0 +1,12 @@
+Index: scim-bridge-0.4.13/agent/scim-bridge-agent-client-listener.cpp
+===================================================================
+--- scim-bridge-0.4.13.orig/agent/scim-bridge-agent-client-listener.cpp
++++ scim-bridge-0.4.13/agent/scim-bridge-agent-client-listener.cpp
+@@ -383,6 +383,7 @@ retval_t ScimBridgeAgentClientListenerIm
+         return RETVAL_FAILED;
+ 
+     }
++    return RETVAL_IGNORED;
+ }
+ 
+ 
