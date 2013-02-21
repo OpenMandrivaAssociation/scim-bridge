@@ -20,6 +20,7 @@ Patch4:		scim-bridge-0.4.16-gcc44.patch
 Patch5:		scim-bridge-0.4.15-fix-gdm.patch
 Patch6:		scim-bridge-0.4.16-fix-gtk-key-snooper.patch
 Patch7:		scim-bridge-0.4.16-fixes-null-imengine.patch
+Patch8:		scim-bridge-0.4.16-fixes-unistd-compile.patch
 Requires:        scim >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
@@ -58,6 +59,7 @@ scim-bridge for qt4.
 %patch5 -p1
 %patch6 -p0
 %patch7 -p1
+%patch8 -p1
 
 %build
 export LIBS="-lX11"
