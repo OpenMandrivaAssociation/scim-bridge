@@ -24,6 +24,7 @@ Requires:        scim >= %{scim_version}
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
 BuildRequires:	 qt4-devel
+BuildRequires:   pkgconfig(gtk+-2.0)
 Provides:        scim-client = %{scim_api}
 Suggests:        %name-gtk = %{version}-%{release}
 
