@@ -60,6 +60,7 @@ scim-bridge for qt4.
 %patch7 -p1
 
 %build
+export LIBS="-lX11"
 %configure2_5x --enable-agent --enable-gtk2-immodule --disable-qt3-immodule --enable-qt4-immodule
 %make
 
