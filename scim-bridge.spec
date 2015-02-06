@@ -1,5 +1,5 @@
 %define version      0.4.16
-%define release      7
+%define release      8
 
 %define scim_version 1.4.7
 
