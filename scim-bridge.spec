@@ -10,7 +10,7 @@ Release:      %{release}
 Group:        System/Internationalization
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 License:      GPLv2+
-URL:          http://sourceforge.net/projects/scim/
+URL:          https://sourceforge.net/projects/scim/
 Source0:      http://downloads.sourceforge.net/scim/%{name}-%{version}.tar.gz
 Patch0:		scim-bridge-0.4.15.2-use-mandriva-qt-dir.patch
 Patch1:		bug-351920-should-return-retval.patch
