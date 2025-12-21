@@ -22,6 +22,9 @@ Patch6:		scim-bridge-0.4.16-fix-gtk-key-snooper.patch
 Patch7:		scim-bridge-0.4.16-fixes-null-imengine.patch
 Patch8:		scim-bridge-0.4.16-fixes-unistd-compile.patch
 Requires:        scim >= %{scim_version}
+BuildRequires:	autoconf
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
 BuildRequires:   scim-devel >= %{scim_version}
 BuildRequires:   automake doxygen gettext-devel intltool
 BuildRequires:	 qt4-devel
